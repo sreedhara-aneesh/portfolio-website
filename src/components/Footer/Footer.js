@@ -1,4 +1,6 @@
 import {Button, Col, Container, Row} from "react-bootstrap";
+import {useEffect, useState} from "react";
+import {getUserProfile} from "../../services/profileEndpoints";
 
 
 const Footer = () => {
@@ -17,10 +19,22 @@ const Footer = () => {
             display: "flex",
             flexDirection: "column"
         },
+        link: {
+            color: "inherit",
+            textDecoration: "none"
+        },
         createdBy: {
             fontWeight: "bold"
         }
     }
+
+    const [userProfile, setUserProfile] = useState();
+
+    useEffect(() => {
+        getUserProfile().then(profile => {
+            setUserProfile(profile);
+        });
+    }, []);
 
     return (
         <div style={style.wrapper}>
@@ -28,7 +42,7 @@ const Footer = () => {
                 <div style={style.contents}>
                     <Row>
                         <Col style={style.columns} sm={12} md={4}>
-                            <span style={style.createdBy}>Created by Aneesh Sreedhara<br/>Copyright {(new Date()).getFullYear()}</span>
+                            <span style={style.createdBy}>Powered by Portfolio Generator<br/>© 2021 Aneesh Sreedhara</span>
                         </Col>
                         <Col style={style.columns} sm={12} md={4}>
                             <h6>Navigation</h6>
@@ -42,9 +56,9 @@ const Footer = () => {
                         <Col style={style.columns} xs={12} md={4}>
                             <h6>Network</h6>
                             <div style={style.links}>
-                                <span>LinkedIn</span>
-                                <span>GitConnected</span>
-                                <span>Github</span>
+                                {userProfile?.basics.profiles.map(profile => {
+                                    return (<a href={profile.url} style={style.link}>{profile.network}</a>);
+                                })}
                             </div>
                         </Col>
                     </Row>

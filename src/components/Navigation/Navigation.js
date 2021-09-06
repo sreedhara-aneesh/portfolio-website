@@ -1,10 +1,21 @@
 import {Navbar, Nav, Container} from 'react-bootstrap'
+import {useEffect, useState} from "react";
+import {getUserProfile} from "../../services/profileEndpoints";
 
 const Navigation = () => {
+
+    const [userProfile, setUserProfile] = useState();
+
+    useEffect(() => {
+        getUserProfile().then(profile => {
+            setUserProfile(profile);
+        });
+    }, []);
+
     return (
         <Navbar expand={"md"}>
             <Container>
-                <Navbar.Brand><Navbar.Text>Aneesh S</Navbar.Text></Navbar.Brand>
+                <Navbar.Brand><Navbar.Text>{userProfile?.basics.name}</Navbar.Text></Navbar.Brand>
                 <Navbar.Toggle/>
                 <Navbar.Collapse className={"justify-content-end"}>
                     <Nav>
