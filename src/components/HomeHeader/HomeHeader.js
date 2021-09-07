@@ -7,7 +7,8 @@ import {Image} from "react-bootstrap";
 
 const style = {
     wrapper: {
-        padding: "6em 1em"
+        padding: "6em 1em",
+        textAlign: "center"
     },
     image: {
         width: "6em",

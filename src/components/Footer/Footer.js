@@ -1,6 +1,7 @@
-import {Button, Col, Container, Row} from "react-bootstrap";
+import {Button, Col, Container, Nav, Row} from "react-bootstrap";
 import {useEffect, useState} from "react";
 import {getUserProfile} from "../../services/profileEndpoints";
+import {Link} from "react-router-dom";
 
 
 const Footer = () => {
@@ -13,7 +14,8 @@ const Footer = () => {
             padding: "2em 0"
         },
         columns: {
-            padding: "2em 2em"
+            padding: "2em 2em",
+            textAlign: "center"
         },
         links: {
             display: "flex",
@@ -47,10 +49,10 @@ const Footer = () => {
                         <Col style={style.columns} sm={12} md={4}>
                             <h6>Navigation</h6>
                             <div style={style.links}>
-                                <span>Home</span>
-                                <span>Portfolio</span>
-                                <span>Resume</span>
-                                <span>Contact</span>
+                                <Link to={"/"} style={style.link}>Home</Link>
+                                <Link to={"/portfolio"} style={style.link}>Portfolio</Link>
+                                <Link to={"/resume"} style={style.link}>Resume</Link>
+                                <Link to={"/contact"} style={style.link}>Contact</Link>
                             </div>
                         </Col>
                         <Col style={style.columns} xs={12} md={4}>
