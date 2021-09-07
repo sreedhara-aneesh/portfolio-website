@@ -35,7 +35,6 @@ const IntroductionSection = () => {
         <div>
             <Container style={style.wrapper}>
                 <div style={style.textWrapper}>
-                    <span style={style.text}>Welcome to {userProfile?.basics.name}'s developer portfolio.</span>
                     <span style={style.text}>{userProfile?.basics.summary}</span>
                 </div>
             </Container>

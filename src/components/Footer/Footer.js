@@ -42,7 +42,7 @@ const Footer = () => {
                 <div style={style.contents}>
                     <Row>
                         <Col style={style.columns} sm={12} md={4}>
-                            <span style={style.createdBy}>Powered by Portfolio Generator<br/>© 2021 Aneesh Sreedhara</span>
+                            <span style={style.createdBy}>Generated for {userProfile?.basics.name}<br/>© 2021 Aneesh Sreedhara</span>
                         </Col>
                         <Col style={style.columns} sm={12} md={4}>
                             <h6>Navigation</h6>
