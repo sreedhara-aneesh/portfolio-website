@@ -28,7 +28,7 @@ const Navigation = () => {
                 <Navbar.Collapse className={"justify-content-end"}>
                     <Nav>
                         <Nav.Link><Link to={"/"} style={style.link}>Home</Link></Nav.Link>
-                        <Nav.Link><Link to={"/portfolio"} style={style.link}>Portfolio</Link></Nav.Link>
+                        <Nav.Link><Link to={"/projects"} style={style.link}>Projects</Link></Nav.Link>
                         <Nav.Link><Link to={"/resume"} style={style.link}>Resume</Link></Nav.Link>
                         <Nav.Link><Link to={"/contact"} style={style.link}>Contact</Link></Nav.Link>
                     </Nav>

@@ -50,7 +50,7 @@ const Footer = () => {
                             <h6>Navigation</h6>
                             <div style={style.links}>
                                 <Link to={"/"} style={style.link}>Home</Link>
-                                <Link to={"/portfolio"} style={style.link}>Portfolio</Link>
+                                <Link to={"/projects"} style={style.link}>Projects</Link>
                                 <Link to={"/resume"} style={style.link}>Resume</Link>
                                 <Link to={"/contact"} style={style.link}>Contact</Link>
                             </div>
