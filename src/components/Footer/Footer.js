@@ -1,4 +1,7 @@
-import {Button, Col, Container, Row} from "react-bootstrap";
+import {Button, Col, Container, Nav, Row} from "react-bootstrap";
+import {useEffect, useState} from "react";
+import {getUserProfile} from "../../services/profileEndpoints";
+import {Link} from "react-router-dom";
 
 
 const Footer = () => {
@@ -11,16 +14,29 @@ const Footer = () => {
             padding: "2em 0"
         },
         columns: {
-            padding: "2em 2em"
+            padding: "2em 2em",
+            textAlign: "center"
         },
         links: {
             display: "flex",
             flexDirection: "column"
         },
+        link: {
+            color: "inherit",
+            textDecoration: "none"
+        },
         createdBy: {
             fontWeight: "bold"
         }
     }
+
+    const [userProfile, setUserProfile] = useState();
+
+    useEffect(() => {
+        getUserProfile().then(profile => {
+            setUserProfile(profile);
+        });
+    }, []);
 
     return (
         <div style={style.wrapper}>
@@ -28,23 +44,23 @@ const Footer = () => {
                 <div style={style.contents}>
                     <Row>
                         <Col style={style.columns} sm={12} md={4}>
-                            <span style={style.createdBy}>Created by Aneesh Sreedhara<br/>Copyright {(new Date()).getFullYear()}</span>
+                            <span style={style.createdBy}>Generated for {userProfile?.basics.name}<br/>© 2021 Aneesh Sreedhara</span>
                         </Col>
                         <Col style={style.columns} sm={12} md={4}>
                             <h6>Navigation</h6>
                             <div style={style.links}>
-                                <span>Home</span>
-                                <span>Portfolio</span>
-                                <span>Resume</span>
-                                <span>Contact</span>
+                                <Link to={"/"} style={style.link}>Home</Link>
+                                <Link to={"/projects"} style={style.link}>Projects</Link>
+                                <Link to={"/resume"} style={style.link}>Resume</Link>
+                                <Link to={"/contact"} style={style.link}>Contact</Link>
                             </div>
                         </Col>
                         <Col style={style.columns} xs={12} md={4}>
                             <h6>Network</h6>
                             <div style={style.links}>
-                                <span>LinkedIn</span>
-                                <span>GitConnected</span>
-                                <span>Github</span>
+                                {userProfile?.basics.profiles.map(profile => {
+                                    return (<a href={profile.url} style={style.link}>{profile.network}</a>);
+                                })}
                             </div>
                         </Col>
                     </Row>

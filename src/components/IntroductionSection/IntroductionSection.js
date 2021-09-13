@@ -1,4 +1,6 @@
 import {Container} from "react-bootstrap";
+import {useEffect, useState} from "react";
+import {getUserProfile} from "../../services/profileEndpoints";
 
 
 const IntroductionSection = () => {
@@ -21,12 +23,19 @@ const IntroductionSection = () => {
         }
     }
 
+    const [userProfile, setUserProfile] = useState();
+
+    useEffect(() => {
+        getUserProfile().then(profile => {
+            setUserProfile(profile);
+        });
+    }, []);
+
     return (
         <div>
             <Container style={style.wrapper}>
                 <div style={style.textWrapper}>
-                    <span style={style.text}>Hello there, and welcome to my portfolio.</span>
-                    <span style={style.text}>I am a computer science student at North Carolina State University, with a background in web development. My goal is to use programming to solve real world problems.</span>
+                    <span style={style.text}>{userProfile?.basics.summary}</span>
                 </div>
             </Container>
         </div>
