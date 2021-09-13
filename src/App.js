@@ -11,6 +11,8 @@ import {
 } from "react-router-dom";
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
+import Resume from "./pages/Resume";
+import Contact from "./pages/Contact";
 
 function App() {
     return (
@@ -20,6 +22,8 @@ function App() {
             <Switch>
                 <Route exact path={"/"} component={Home}/>
                 <Route exact path={"/projects"} component={Projects}/>
+                <Route exact path={"/resume"} component={Resume} />
+                <Route exact path={"/contact"} component={Contact} />
                 <Route path={"*"} component={() => {return "404"}}/>
             </Switch>
             <Footer/>
