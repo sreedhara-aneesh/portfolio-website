@@ -13,7 +13,7 @@ const ProjectsCardsSection = () => {
             margin: "auto",
             display: "flex",
             justifyContent: "center",
-            flexWrap: "overflow"
+            flexWrap: "wrap"
         },
         card: {
             width: "420px",
