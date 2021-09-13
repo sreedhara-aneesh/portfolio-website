@@ -17,7 +17,6 @@ import Contact from "./pages/Contact";
 function App() {
     return (
         <Router className={"App"}>
-            <Alert variant={"warning"}>This website is under development, and very much unfinished.</Alert>
             <Navigation/>
             <Switch>
                 <Route exact path={"/"} component={Home}/>
