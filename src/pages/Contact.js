@@ -1,9 +1,7 @@
 import DefaultHeader from "../components/DefaultHeader/DefaultHeader";
 import {Card, ListGroup} from "react-bootstrap";
-import {useEffect, useState} from "react";
-import {getUserProfile} from "../services/profileEndpoints";
 
-const Contact = () => {
+const Contact = ({userProfile}) => {
 
     const style = {
         wrapper: {
@@ -15,14 +13,6 @@ const Contact = () => {
             width: "420px"
         }
     }
-
-    const [userProfile, setUserProfile] = useState();
-
-    useEffect(() => {
-        getUserProfile().then(profile => {
-            setUserProfile(profile);
-        });
-    }, []);
 
     return (
         <>

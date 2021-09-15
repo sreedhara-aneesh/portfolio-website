@@ -1,8 +1,6 @@
-import {useEffect, useState} from "react";
-import {getUserProfile} from "../../services/profileEndpoints";
 import ProjectCard from "../ProjectCard/ProjectCard";
 
-const ProjectsCardsSection = () => {
+const ProjectsCardsSection = ({userProfile}) => {
 
     const style = {
         wrapper: {
@@ -20,14 +18,6 @@ const ProjectsCardsSection = () => {
             margin: "10px"
         }
     }
-
-    const [userProfile, setUserProfile] = useState();
-
-    useEffect(() => {
-        getUserProfile().then(profile => {
-            setUserProfile(profile);
-        });
-    }, []);
 
     return (
         <div style={style.wrapper}>

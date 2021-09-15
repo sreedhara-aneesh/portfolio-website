@@ -3,7 +3,6 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navigation from "./components/Navigation/Navigation";
 import Footer from "./components/Footer/Footer";
-import {Alert} from "react-bootstrap";
 import {
     BrowserRouter as Router,
     Switch,
@@ -13,16 +12,27 @@ import Home from "./pages/Home";
 import Projects from "./pages/Projects";
 import Resume from "./pages/Resume";
 import Contact from "./pages/Contact";
+import {useEffect, useState} from "react";
+import {getUserProfile} from "./services/profileEndpoints";
 
 function App() {
+
+    const [userProfile, setUserProfile] = useState();
+
+    useEffect(() => {
+        getUserProfile().then(profile => {
+            setUserProfile(profile);
+        });
+    }, []);
+
     return (
         <Router className={"App"}>
             <Navigation/>
             <Switch>
-                <Route exact path={"/"} component={Home}/>
-                <Route exact path={"/projects"} component={Projects}/>
-                <Route exact path={"/resume"} component={Resume} />
-                <Route exact path={"/contact"} component={Contact} />
+                <Route exact path={"/"}><Home userProfile={userProfile} /></Route>
+                <Route exact path={"/projects"}><Projects userProfile={userProfile} /></Route>
+                <Route exact path={"/resume"}><Resume userProfile={userProfile} /></Route>
+                <Route exact path={"/contact"}><Contact userProfile={userProfile} /></Route>
                 <Route path={"*"} component={() => {return "404"}}/>
             </Switch>
             <Footer/>

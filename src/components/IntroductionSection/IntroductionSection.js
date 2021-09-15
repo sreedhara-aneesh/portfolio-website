@@ -1,9 +1,6 @@
 import {Container} from "react-bootstrap";
-import {useEffect, useState} from "react";
-import {getUserProfile} from "../../services/profileEndpoints";
 
-
-const IntroductionSection = () => {
+const IntroductionSection = ({userProfile}) => {
 
     const style = {
         wrapper: {
@@ -22,14 +19,6 @@ const IntroductionSection = () => {
             textAlign: "justify"
         }
     }
-
-    const [userProfile, setUserProfile] = useState();
-
-    useEffect(() => {
-        getUserProfile().then(profile => {
-            setUserProfile(profile);
-        });
-    }, []);
 
     return (
         <div>
