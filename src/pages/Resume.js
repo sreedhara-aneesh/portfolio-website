@@ -1,9 +1,7 @@
 import DefaultHeader from "../components/DefaultHeader/DefaultHeader";
-import {useEffect, useState} from "react";
-import {getUserProfile} from "../services/profileEndpoints";
 import {Button} from "react-bootstrap";
 
-const Resume = () => {
+const Resume = ({userProfile}) => {
 
     const style = {
         wrapper: {
@@ -12,14 +10,6 @@ const Resume = () => {
             justifyContent: "center"
         }
     }
-
-    const [userProfile, setUserProfile] = useState();
-
-    useEffect(() => {
-        getUserProfile().then(profile => {
-            setUserProfile(profile);
-        });
-    }, []);
 
     return (
         <>

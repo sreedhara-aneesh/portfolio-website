@@ -1,10 +1,8 @@
-import {Button, Col, Container, Nav, Row} from "react-bootstrap";
-import {useEffect, useState} from "react";
-import {getUserProfile} from "../../services/profileEndpoints";
+import {Col, Container, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
 
 
-const Footer = () => {
+const Footer = ({userProfile}) => {
 
     const style = {
         wrapper: {
@@ -29,14 +27,6 @@ const Footer = () => {
             fontWeight: "bold"
         }
     }
-
-    const [userProfile, setUserProfile] = useState();
-
-    useEffect(() => {
-        getUserProfile().then(profile => {
-            setUserProfile(profile);
-        });
-    }, []);
 
     return (
         <div style={style.wrapper}>

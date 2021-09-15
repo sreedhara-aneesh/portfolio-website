@@ -1,8 +1,3 @@
-import {
-    useState,
-    useEffect
-} from "react";
-import {getUserProfile} from "../../services/profileEndpoints";
 import {Image} from "react-bootstrap";
 
 const style = {
@@ -16,16 +11,7 @@ const style = {
     }
 }
 
-const HomeHeader = () => {
-
-    const [userProfile, setUserProfile] = useState();
-
-    useEffect(() => {
-        getUserProfile().then(profile => {
-            setUserProfile(profile);
-        });
-    }, []);
-
+const HomeHeader = ({userProfile}) => {
     return (
         <div style={style.wrapper}>
             <h1>{userProfile?.basics.name}</h1>

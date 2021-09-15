@@ -1,11 +1,11 @@
 import DefaultHeader from "../components/DefaultHeader/DefaultHeader";
 import ProjectsCardsSection from "../components/ProjectsCardsSection/ProjectsCardsSection";
 
-const Projects = () => {
+const Projects = ({userProfile}) => {
     return (
         <>
             <DefaultHeader title={"Projects"}/>
-            <ProjectsCardsSection/>
+            <ProjectsCardsSection userProfile={userProfile}/>
         </>
     );
 }
