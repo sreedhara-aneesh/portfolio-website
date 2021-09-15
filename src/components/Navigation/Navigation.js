@@ -1,9 +1,7 @@
 import {Navbar, Nav, Container} from 'react-bootstrap'
-import {useEffect, useState} from "react";
-import {getUserProfile} from "../../services/profileEndpoints";
 import {Link} from "react-router-dom";
 
-const Navigation = () => {
+const Navigation = ({userProfile}) => {
 
     const style = {
         link: {
@@ -11,14 +9,6 @@ const Navigation = () => {
             textDecoration: "none"
         }
     }
-
-    const [userProfile, setUserProfile] = useState();
-
-    useEffect(() => {
-        getUserProfile().then(profile => {
-            setUserProfile(profile);
-        });
-    }, []);
 
     return (
         <Navbar expand={"md"}>

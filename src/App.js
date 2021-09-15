@@ -27,7 +27,7 @@ function App() {
 
     return (
         <Router className={"App"}>
-            <Navigation/>
+            <Navigation userProfile={userProfile} />
             <Switch>
                 <Route exact path={"/"}><Home userProfile={userProfile} /></Route>
                 <Route exact path={"/projects"}><Projects userProfile={userProfile} /></Route>
@@ -35,7 +35,7 @@ function App() {
                 <Route exact path={"/contact"}><Contact userProfile={userProfile} /></Route>
                 <Route path={"*"} component={() => {return "404"}}/>
             </Switch>
-            <Footer/>
+            <Footer userProfile={userProfile} />
         </Router>
     );
 }
