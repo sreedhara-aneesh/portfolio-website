@@ -9,5 +9,4 @@ RUN npm install -g serve@14.1.2
 COPY . .
 RUN npm run build
 
-EXPOSE 80
-CMD serve -s build -p 80
+CMD serve -s build -p $PORT
