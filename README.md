@@ -1,3 +1,26 @@
+# Portfolio Website
+
+This project was created to be a self-updating developer portfolio, pulling information from [https://gitconnected.com/](https://gitconnected.com/) and GitHub.
+
+## Documentation
+
+### Installation & Usage
+
+#### Development
+
+```
+npm install
+npm start
+```
+
+#### Production
+
+```
+sudo docker compose up --build
+```
+
+---
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
