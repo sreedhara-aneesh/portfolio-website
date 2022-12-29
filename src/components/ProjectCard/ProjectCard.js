@@ -17,8 +17,7 @@ const ProjectCard = ({ name, summary, languages, githubUrl, website }) => {
             </Card.Header>
             <Card.Body>
                 <Card.Text>{summary}</Card.Text>
-                <a href={website} style={style.button}><Button variant={"primary"}>Demo</Button></a>
-                <a href={githubUrl} style={style.button}><Button variant={"secondary"}>Github</Button></a>
+                <a href={githubUrl} style={style.button}><Button variant={"primary"}>Github</Button></a>
             </Card.Body>
             <Card.Footer>
                 {languages.map(language => {
