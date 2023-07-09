@@ -6,7 +6,8 @@ const Footer = ({userProfile}) => {
 
     const style = {
         wrapper: {
-            background: "lightGray"
+            background: "lightGray",
+            flexGrow: 1
         },
         contents: {
             padding: "2em 0"
@@ -34,7 +35,7 @@ const Footer = ({userProfile}) => {
                 <div style={style.contents}>
                     <Row>
                         <Col style={style.columns} sm={12} md={4}>
-                            <span style={style.createdBy}>© 2022 Aneesh Sreedhara</span>
+                            <span style={style.createdBy}>© {new Date().getFullYear()} {userProfile?.basics.name}</span>
                         </Col>
                         <Col style={style.columns} sm={12} md={4}>
                             <h6>Navigation</h6>
@@ -48,7 +49,9 @@ const Footer = ({userProfile}) => {
                         <Col style={style.columns} xs={12} md={4}>
                             <h6>Network</h6>
                             <div style={style.links}>
-                                {userProfile?.basics.profiles.map(profile => {
+                                {userProfile?.basics.profiles.filter(profile => {
+                                    return profile.network !== "gitconnected"
+                                }).map(profile => {
                                     return (<a href={profile.url} style={style.link}>{profile.network}</a>);
                                 })}
                             </div>
