@@ -28,7 +28,7 @@ const Resume = ({userProfile}) => {
 
     const makeDocDefinition = (userProfile) => {
 
-        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        const months = [null, 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
         const docDefinition = {
             content: [
@@ -36,7 +36,7 @@ const Resume = ({userProfile}) => {
                     text: userProfile.basics.name.toUpperCase(),
                     bold: "true",
                     alignment: "center",
-                    fontSize: 20
+                    fontSize: 13
                 },
                 {
                     text: [userProfile.basics.email, userProfile.basics.phone].join(" • "),
