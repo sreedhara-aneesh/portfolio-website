@@ -36,7 +36,7 @@ const Resume = ({userProfile}) => {
                     text: userProfile.basics.name.toUpperCase(),
                     bold: "true",
                     alignment: "center",
-                    fontSize: 13
+                    fontSize: 15
                 },
                 {
                     text: [userProfile.basics.email, userProfile.basics.phone].join(" • "),
@@ -88,10 +88,12 @@ const Resume = ({userProfile}) => {
                                 ]);
                                 section.push([
                                     {
-                                        text: `${w.name} | ${w.location}`,
-                                        colSpan: 2
+                                        text: `${w.name}`
                                     },
-                                    {}
+                                    {
+                                        text: `${w.location}`,
+                                        alignment: "right"
+                                    },
                                 ]);
                                 section.push([
                                     {
