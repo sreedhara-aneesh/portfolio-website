@@ -7,10 +7,10 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 pdfMake.fonts = {
     lato: {
-        normal: "https://raw.githubusercontent.com/google/fonts/main/ofl/lato/Lato-Regular.ttf",
-        bold: "https://raw.githubusercontent.com/google/fonts/main/ofl/lato/Lato-Bold.ttf",
-        italics: "https://raw.githubusercontent.com/google/fonts/main/ofl/lato/Lato-Italic.ttf",
-        bolditalics: "https://raw.githubusercontent.com/google/fonts/main/ofl/lato/Lato-BoldItalic.ttf"
+        normal: "https://raw.githubusercontent.com/google/fonts/main/ofl/atkinsonhyperlegible/AtkinsonHyperlegible-Regular.ttf",
+        bold: "https://raw.githubusercontent.com/google/fonts/main/ofl/atkinsonhyperlegible/AtkinsonHyperlegible-Bold.ttf",
+        italics: "https://raw.githubusercontent.com/google/fonts/main/ofl/atkinsonhyperlegible/AtkinsonHyperlegible-Italic.ttf",
+        bolditalics: "https://raw.githubusercontent.com/google/fonts/main/ofl/atkinsonhyperlegible/AtkinsonHyperlegible-BoldItalic.ttf"
     }
 }
 
@@ -36,7 +36,7 @@ const Resume = ({userProfile}) => {
                     text: userProfile.basics.name.toUpperCase(),
                     bold: "true",
                     alignment: "center",
-                    fontSize: 15
+                    fontSize: 12
                 },
                 {
                     text: [userProfile.basics.email, userProfile.basics.phone].join(" • "),
@@ -54,10 +54,10 @@ const Resume = ({userProfile}) => {
                         .join(" • "),
                     alignment: "center",
                 },
-            {
-                text: userProfile.basics.summary,
-                margin: [0, 10, 0, 0]
-            },
+                {
+                    text: userProfile.basics.summary,
+                    margin: [0, 5, 0, 0]
+                },
                 {
                     table: {
                         headerRows: 1,
@@ -97,7 +97,8 @@ const Resume = ({userProfile}) => {
                                 ]);
                                 section.push([
                                     {
-                                        ul: w.highlights,
+                                        // ul: w.highlights,
+                                        text: w.summary,
                                         colSpan: 2
                                     },
                                     {}
@@ -155,6 +156,32 @@ const Resume = ({userProfile}) => {
                     table: {
                         headerRows: 1,
                         widths: ["*", "auto"],
+                        body: [
+                            [
+                                {
+                                    text: "SKILLS",
+                                    bold: "true",
+                                    colSpan: 2
+                                },
+                                {}
+                            ],
+                            [
+                                {
+                                    text: userProfile.skills.map(s => s.name).join(", "),
+                                    margin: [0, 5, 0, 0],
+                                    colSpan: 2
+                                },
+                                {}
+                            ]
+                        ]
+                    },
+                    margin: [0, 10, 0, 0],
+                    layout: "headerLineOnly"
+                },
+                {
+                    table: {
+                        headerRows: 1,
+                        widths: ["*", "auto"],
                         body: (() => {
                             const section = []
                             section.push([
@@ -195,34 +222,7 @@ const Resume = ({userProfile}) => {
                     },
                     margin: [0, 10, 0, 0],
                     layout: "headerLineOnly"
-                },
-                {
-                    table: {
-                        headerRows: 1,
-                        widths: ["*", "auto"],
-                        body: [
-                            [
-                                {
-                                    text: "SKILLS",
-                                    bold: "true",
-                                    colSpan: 2
-                                },
-                                {}
-                            ],
-                            [
-                                {
-                                    text: userProfile.skills.map(s => s.name).join(" | "),
-                                    margin: [0, 5, 0, 0],
-                                    colSpan: 2
-                                },
-                                {}
-                            ]
-                        ]
-                    },
-                    margin: [0, 10, 0, 0],
-                    layout: "headerLineOnly"
-                },
-                
+                }
             ],
             defaultStyle: {
                 fontSize: 10,
